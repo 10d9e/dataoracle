@@ -1,1 +1,3 @@
-# dataoracle
+# Software Design Specification: Data Oracle Subsystem
+
+
