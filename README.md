@@ -180,3 +180,7 @@ The proposed architecture consists of the following AWS services:
 - **High Availability**: AWS services are designed for high availability and fault tolerance.
 
 - **Security**: IAM roles and permissions can be tightly controlled for security.
+
+### References and Prior art
+
+[fil naive marketwatch](https://github.com/ribasushi/fil-naive-marketwatch). [ribasushi](https://github.com/ribasushi). Retrieved on Sept 2nd.
