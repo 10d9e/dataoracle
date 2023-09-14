@@ -61,3 +61,29 @@ To achieve the goals outlined above, the proposed solution includes the followin
 4. **High Availability**: Deploy the subsystem in a high-availability configuration to minimize downtime.
 
 The Data Oracle subsystem will be able to efficiently retrieve, store, and serve "StateMarketDeals" data while maintaining data consistency and scalability.
+
+## REST API Specification
+
+### Overview
+The REST API for querying `StateMarketDeals` provides third-party applications with a standardized and secure interface to access data from the Data Oracle subsystem. This API allows clients to retrieve `StateMarketDeals` data from both the database and the cache efficiently.
+
+### API Endpoints
+The API will consist of the following endpoints:
+
+1. **Retrieve `StateMarketDeals` by ID**
+   - **Endpoint**: `GET /api/state-market-deals/{id}`
+   - **Description**: Retrieve a specific `StateMarketDeals` entry by its unique ID.
+   - **Parameters**:
+     - `{id}`: The unique identifier of the `StateMarketDeals` entry, defined as integer-casted filecoin addresses (ie. `f0xyz` with the `f0` dropped) 
+   - **Response**:
+     - `200 OK` with the retrieved data in the response body.
+     - `404 Not Found` if the specified ID does not exist.
+
+2. **Search for `StateMarketDeals`**
+   - **Endpoint**: `GET /api/state-market-deals`
+   - **Description**: Retrieve a list of `StateMarketDeals` entries based on query parameters.
+   - **Parameters**:
+     - Query parameters can be used to filter, sort, and paginate results.
+   - **Response**:
+     - `200 OK` with the list of matching `StateMarketDeals` entries in the response body.
+
