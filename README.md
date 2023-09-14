@@ -120,3 +120,63 @@ The API will consist of the following endpoints:
 ### Testing
 - Thoroughly test the API endpoints with sample requests and edge cases to ensure functionality and correctness.
 
+## Alternative Cloud-based Design
+
+An alternative design for periodically querying an external API for data and storing it into a local PostgreSQL database using AWS services can leverage serverless and managed services to reduce infrastructure management overhead. Below is an outline of this alternative design:
+
+### Architecture Overview:
+The proposed architecture consists of the following AWS services:
+
+1. **AWS Lambda**: To execute code that queries the external API and stores data in the PostgreSQL database.
+
+2. **Amazon RDS (Relational Database Service)**: To host the PostgreSQL database.
+
+3. **Amazon EventBridge (formerly CloudWatch Events)**: To schedule and trigger the Lambda function periodically.
+
+4. **Amazon API Gateway (Optional)**: To expose an HTTP API for manual data retrieval or management.
+
+### Design Steps:
+
+1. **Create a PostgreSQL Database on RDS**:
+   Set up an Amazon RDS instance running PostgreSQL as your database. Configure security groups and credentials appropriately.
+
+2. **Define the Data Model**:
+   Define the data model and schema for the data you'll be storing in the PostgreSQL database, similar to step 3 in the previous design.
+
+3. **Develop the Lambda Function**:
+   Create an AWS Lambda function in your preferred programming language (e.g., Node.js, Python, Go) to perform the following tasks:
+   
+   - Query the external API to retrieve data.
+   - Transform and process the data as needed.
+   - Store the processed data in the PostgreSQL database using libraries suitable for your chosen runtime (e.g., Node.js - pg-promise, Python - SQLAlchemy).
+
+   Ensure the Lambda function has the necessary IAM roles and permissions to interact with both the external API and the RDS database.
+
+4. **Schedule Lambda Execution**:
+   Use Amazon EventBridge (formerly CloudWatch Events) to schedule the Lambda function to run at your desired intervals (e.g., daily, hourly). Create a rule that triggers the Lambda function at the specified schedule.
+
+5. **Error Handling and Logging**:
+   Implement proper error handling within the Lambda function to capture and log any issues. You can use AWS CloudWatch Logs for centralized logging.
+
+6. **Testing and Monitoring**:
+   Test your Lambda function to ensure it retrieves data correctly and stores it in the database. Set up CloudWatch Alarms and Metrics for monitoring Lambda performance and database health.
+
+7. **Optional: Expose an API**:
+   If you need manual data retrieval or management, consider creating an Amazon API Gateway with an associated Lambda function to expose an HTTP API endpoint for these operations.
+
+8. **Deploy and Monitor**:
+   Deploy the Lambda function and configure CloudWatch Events for scheduling. Monitor the system's performance, errors, and logs using AWS CloudWatch.
+
+### Advantages of this Design:
+
+- **Serverless**: No need to manage server instances. AWS Lambda automatically scales based on demand.
+
+- **Managed Database**: Amazon RDS handles database maintenance, backups, and scaling.
+
+- **Scalability**: Both Lambda and RDS can scale horizontally to handle increased workloads.
+
+- **Cost-Efficient**: Pay only for the resources you use, with minimal infrastructure overhead.
+
+- **High Availability**: AWS services are designed for high availability and fault tolerance.
+
+- **Security**: IAM roles and permissions can be tightly controlled for security.
