@@ -120,6 +120,9 @@ The API will consist of the following endpoints:
 ### Testing
 - Thoroughly test the API endpoints with sample requests and edge cases to ensure functionality and correctness.
 
+### System Design
+![image](https://github.com/jlogelin/dataoracle/assets/1556714/e24eb4c9-3b5c-40f7-81e6-e3d712321d72)
+
 ## Alternative Cloud-based Design
 
 An alternative design for periodically querying an external API for data and storing it into a local PostgreSQL database using AWS services can leverage serverless and managed services to reduce infrastructure management overhead. Below is an outline of this alternative design:
