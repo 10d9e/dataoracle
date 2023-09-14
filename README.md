@@ -180,8 +180,6 @@ The proposed architecture consists of the following AWS services:
 
 - **Scalability**: Both Lambda and RDS can scale horizontally to handle increased workloads.
 
-- **Cost-Efficient**: Pay only for the resources you use, with minimal infrastructure overhead.
-
 - **High Availability**: AWS services are designed for high availability and fault tolerance.
 
 - **Security**: IAM roles and permissions can be tightly controlled for security.
