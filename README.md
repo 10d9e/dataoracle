@@ -186,6 +186,15 @@ The proposed architecture consists of the following AWS services:
 
 - **Security**: IAM roles and permissions can be tightly controlled for security.
 
+### AWS RDS Pricing
+
+Below is a pricing breakdown of running an [extra large postgresql instance on AWS](https://calculator.aws/#/addService/RDSPostgreSQL).
+
+Monthly Cost for RDS Proxy (Monthly): 525.60 USD
+Amazon RDS PostgreSQL instances cost (Monthly): 3,118.56 USD
+Storage pricing (Monthly): 588.80 USD
+Total: 4,232.96 USD
+
 ### References and Prior art
 
 [fil naive marketwatch](https://github.com/ribasushi/fil-naive-marketwatch). [ribasushi](https://github.com/ribasushi). Retrieved on Sept 2nd.
