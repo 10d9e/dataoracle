@@ -22,7 +22,7 @@ The primary goals of the Data Oracle subsystem are as follows:
 ## Non-goals
 The following are non-goals for the Data Oracle subsystem:
 
-1. User authentication and authorization: User access control is out of scope for this subsystem.
+1. ~~User authentication and authorization: User access control is out of scope for this subsystem.~~ (Tentative: add simple auth for metering and throttling as required)
 
 2. Real-time data updates: The subsystem does not provide real-time data updates; it operates on a periodic batch basis.
 
@@ -86,4 +86,37 @@ The API will consist of the following endpoints:
      - Query parameters can be used to filter, sort, and paginate results.
    - **Response**:
      - `200 OK` with the list of matching `StateMarketDeals` entries in the response body.
+
+### Authentication and Authorization
+- Authentication and authorization mechanisms should be implemented to ensure that only authorized third-party applications can access the API. This may involve the use of API keys, OAuth 2.0, or other authentication methods.
+
+### Rate Limiting
+- Implement rate limiting to prevent abuse of the API and ensure fair usage.
+
+### Pagination
+- For endpoints that return multiple results (e.g., search), implement pagination using query parameters (e.g., `page` and `limit`) to allow clients to retrieve large result sets efficiently.
+
+### Cache Integration
+- The API should take advantage of the cache layer to improve query performance. Consider implementing caching strategies like time-based expiration or cache invalidation based on data updates.
+
+### Error Handling
+- Implement proper error handling and provide meaningful error responses, including status codes and error messages, for various scenarios, such as invalid requests or server errors.
+
+### Request and Response Formats
+- Define the expected request and response formats, which should typically be in JSON format for ease of use and consistency.
+
+### Security
+- Ensure that the API follows security best practices, including input validation, data sanitization, and protection against common security threats like SQL injection and XSS attacks.
+
+### Documentation
+- Provide comprehensive API documentation, including endpoint descriptions, query parameters, request/response examples, and authentication instructions.
+
+### Monitoring and Logging
+- Set up monitoring and logging for the API to track usage, performance, and errors. Use AWS CloudWatch or similar services for this purpose.
+
+### Versioning (Optional)
+- Consider implementing API versioning to ensure backward compatibility as the API evolves.
+
+### Testing
+- Thoroughly test the API endpoints with sample requests and edge cases to ensure functionality and correctness.
 
